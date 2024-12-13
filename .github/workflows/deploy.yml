@@ -19,8 +19,8 @@ jobs:
 
     - name: Log in to Replicate Docker registry
       run: |
-        echo "${{ secrets.REPLICATE_TOKEN }}" | docker login -u replicate-user --password-stdin r8.im
+        echo "r8_89sRw6GjWnDaRlqZNsIj1uEh8W4APVv1QTSCw" | docker login -u replicate-user --password-stdin r8.im
 
     - name: Build and Push Docker image
       run: |
-        docker buildx build --platform linux/amd64 -t r8.im/${{ github.repository }} . --push
+        docker buildx build --platform linux/amd64 -t r8.im/ikuharu08/apalapler . --push
