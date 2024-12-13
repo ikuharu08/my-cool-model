@@ -19,7 +19,7 @@ jobs:
 
     - name: Log in to Replicate Docker registry
       run: |
-        echo "r8_89sRw6GjWnDaRlqZNsIj1uEh8W4APVv1QTSCw" | docker login -u replicate-user --password-stdin r8.im
+        echo "r8_V0ihJgr6QoL9X4CKPv85mfxOIREqcUt3ENUb0" | docker login -u replicate-user --password-stdin r8.im
 
     - name: Build and Push Docker image
       run: |
