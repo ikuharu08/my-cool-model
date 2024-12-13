@@ -1,0 +1,26 @@
+name: Build and Push to Replicate
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Replicate Docker registry
+      run: |
+        echo "${{ secrets.REPLICATE_TOKEN }}" | docker login -u replicate-user --password-stdin r8.im
+
+    - name: Build and Push Docker image
+      run: |
+        docker buildx build --platform linux/amd64 -t r8.im/${{ github.repository }} . --push
